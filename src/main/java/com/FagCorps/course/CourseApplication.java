@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 
 public class CourseApplication {
-
+//iniciliaziçãogit 
 	public static void main(String[] args) {
 		SpringApplication.run(CourseApplication.class, args);
 	}
