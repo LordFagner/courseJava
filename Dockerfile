@@ -1,12 +1,12 @@
-from ubuntu:latest AS build 
+from ugitbuntu:latest AS build 
 run apt-get update
-run apt-get install openjdk-21-jdk -y
+run apt-get install openjdk-17-jdk -y
 COPY . .
 
 run apt-get install maven -y
 run mvn clean install
 
-FROM openjdk:21-jdk-slim
+FROM openjdk:17-jdk-slim
 
 expose 8080
 
