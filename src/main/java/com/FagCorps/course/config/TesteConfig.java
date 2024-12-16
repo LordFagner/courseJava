@@ -22,7 +22,7 @@ import com.FagCorps.course.entites.User;
 import com.FagCorps.course.entites.Enums.OrderStatus;
 
 @Configuration
-@Profile("test") // Define que essa configuração será usada apenas no perfil 'test'
+@Profile("dev") // Define que essa configuração será usada apenas no perfil 'test'
 public class TesteConfig implements CommandLineRunner {
 
 	@Autowired
