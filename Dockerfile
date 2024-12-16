@@ -1,15 +1,12 @@
-from ubuntu:latest AS build 
-run apt-get update
-run apt-get install openjdk-17-jdk -y
+# Etapa de Build
+FROM maven:3.8.7-openjdk-17 AS build
+WORKDIR /app
 COPY . .
+RUN mvn clean install -DskipTests
 
-run apt-get install maven -y
-run mvn clean install
-
+# Etapa Final (Runtime)
 FROM openjdk:17-jdk-slim
-
-expose 8080
-
-COPY --from=build target/course-0.0.1-SNAPSHOT.jar app.jar
-
-ENTRYPOINT [ "java","-jar,"app.jar"]
+WORKDIR /app
+EXPOSE 8080
+COPY --from=build /app/target/course-0.0.1-SNAPSHOT.jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
