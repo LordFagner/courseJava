@@ -1,4 +1,4 @@
-from u buntu:latest AS build 
+from ubuntu:latest AS build 
 run apt-get update
 run apt-get install openjdk-21-jdk -y
 COPY . .
