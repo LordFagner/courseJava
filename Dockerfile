@@ -1,11 +1,11 @@
 # Etapa de Build
-FROM maven:3.8.7-openjdk-17 AS build
+FROM maven:3.9.4-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY . .
 RUN mvn clean install -DskipTests
 
 # Etapa Final (Runtime)
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
 EXPOSE 8080
 COPY --from=build /app/target/course-0.0.1-SNAPSHOT.jar app.jar
